@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyPaws | Servicios Premium para tu Perro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --primary: #6b4e3d;
+            --secondary: #e9c46a;
+            --accent: #e76f51;
+            --light: #f8f1e5;
+            --dark: #2a2d34;
+            --green: #2a9d8f;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header y navegación */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* Banner principal */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.4);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d85a3d;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Secciones generales */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        /* Servicios - Tablas responsivas */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .service-category {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            overflow-x: auto; /* Para permitir desplazamiento en móvil */
+        }
+        
+        .service-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Ancho mínimo para que no se deforme */
+        }
+        
+        .service-table th {
+            background-color: var(--light);
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .service-table td {
+            padding: 15px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .service-table tr:nth-child(even) {
+            background-color: #fcf9f4;
+        }
+        
+        .service-table tr:hover {
+            background-color: #fef8ec;
+        }
+        
+        .service-table .icon {
+            font-size: 1.4rem;
+        }
+        
+        .price {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* Formularios */
+        .form-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Galería */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Testimonios */
+        .testimonials {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            max-width: 350px;
+            position: relative;
+            margin-top: 30px;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--secondary);
+            font-family: Georgia, serif;
+            opacity: 0.2;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .service-table {
+                min-width: 500px; /* Ajuste para móviles */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .service-table {
+                min-width: 400px; /* Ajuste para móviles pequeños */
+            }
+            
+            .service-table th, 
+            .service-table td {
+                padding: 10px 5px;
+                font-size: 0.85rem;
+            }
+            
+            .service-table .icon {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>HappyPaws</span>
+                </div>
+                
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#pedidos">Pedidos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner principal -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Hacemos feliz a tu mejor amigo</h1>
+            <p>Servicios premium de cuidado, paseo y diversión para perros. Tu mascota merece lo mejor, y nosotros nos encargamos de dárselo.</p>
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn btn-primary">Reservar ahora</a>
+                <a href="#servicios" class="btn btn-secondary">Conócenos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos una variedad de servicios diseñados para mantener a tu perro feliz, saludable y lleno de energía.</p>
+            </div>
+
+            <!-- Paseos personalizados -->
+            <div class="service-category">
+                <div class="service-header">
+                    <h3>Paseos Personalizados</h3>
+                </div>
+                <table class="service-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-paw icon"></i> Servicio</th>
+                            <th><i class="fas fa-clock icon"></i> Duración</th>
+                            <th><i class="fas fa-money-bill-wave icon"></i> Tarifa Individual</th>
+                            <th><i class="fas fa-briefcase icon"></i> Paquete Semanal</th>
+                            <th><i class="fas fa-star icon"></i> Extras Incluidos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Paseo Exprés</td>
+                            <td>30 minutos</td>
+                            <td class="price">$10</td>
+                            <td class="price">$45 (5 paseos)</td>
+                            <td>Agua + fotos del paseo</td>
+                        </tr>
+                        <tr>
+                            <td>Paseo Largo</td>
+                            <td>1 hora</td>
+                            <td class="price">$18</td>
+                            <td class="price">$80 (5 paseos)</td>
+                            <td>Juegos + ruta personalizada</td>
+                        </tr>
+                        <tr>
+                            <td>Sesión de Juego y Estimulación</td>
+                            <td>1 hora</td>
+                            <td class="price">$15</td>
+                            <td class="price">$65 (5 sesiones)</td>
+                            <td>Juguetes + entrenamiento básico <i class="fas fa-baseball-ball"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cuidado diario -->
+            <div class="service-category">
+                <div class="service-header">
+                    <h3>Cuidado Diario</h3>
+                </div>
+                <table class="service-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-paw icon"></i> Servicio</th>
+                            <th><i class="fas fa-clock icon"></i> Duración</th>
+                            <th><i class="fas fa-money-bill-wave icon"></i> Tarifa Individual</th>
+                            <th><i class="fas fa-briefcase icon"></i> Paquete Semanal</th>
+                            <th><i class="fas fa-star icon"></i> Extras Incluidos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Guardería Diurna</td>
+                            <td>Hasta 8 horas</td>
+                            <td class="price">$30</td>
+                            <td class="price">$130 (5 días)</td>
+                            <td>Paseo incluido + socialización con otros <i class="fas fa-dog"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Hospedaje Nocturno</td>
+                            <td>24 horas</td>
+                            <td class="price">$45</td>
+                            <td class="price">$200 (5 noches)</td>
+                            <td>Alimentación + paseo diario + reportes <i class="fas fa-camera"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Jornada Completa (24h)</td>
+                            <td>Día y noche</td>
+                            <td class="price">$60</td>
+                            <td class="price">$270 (5 días)</td>
+                            <td>Paseo + juegos + monitoreo <i class="fas fa-bed"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Helados naturales -->
+            <div class="service-category">
+                <div class="service-header">
+                    <h3>Helados Naturales</h3>
+                </div>
+                <div style="padding: 30px; text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">Deliciosos helados artesanales hechos con ingredientes 100% naturales, perfectos para refrescar a tu perro en días calurosos.</p>
+                    <p style="font-size: 1.1rem;"><strong>Sabores disponibles:</strong> Pollo y zanahoria, Carne y manzana, Plátano y mantequilla de cacahuete</p>
+
+                    <a href="#pedidos" class="btn btn-primary" style="margin-top: 20px;">Hacer pedido</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pedidos de helados -->
+    <section id="pedidos" class="ice-cream">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pedido de Helados</h2>
+                <p>Pide nuestros deliciosos helados naturales para consentir a tu mascota. Elaborados con ingredientes frescos y saludables.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="order-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="flavor">Sabor de helado</label>
+                            <select id="flavor" class="form-control" required>
+                                <option value="">Selecciona un sabor</option>
+                                <option value="pollo">Pollo y zanahoria</option>
+                                <option value="carne">Carne y manzana</option>
+                                <option value="platano">Plátano y mantequilla de cacahuete</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Cantidad</label>
+                            <input type="number" id="quantity" class="form-control" min="1" value="1" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="delivery">Dirección de entrega</label>
+                        <textarea id="delivery" class="form-control" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Notas adicionales</label>
+                        <textarea id="notes" class="form-control" placeholder="Alergias, preferencias, horario preferido, etc."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Realizar pedido</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y agenda -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto y Agenda</h2>
+                <p>¿Listo para darle a tu perro la experiencia que se merece? Agenda un servicio con nosotros hoy mismo.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client-name">Nombre</label>
+                            <input type="text" id="client-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-type">Tipo de servicio</label>
+                            <select id="service-type" class="form-control" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="paseo">Paseo Personalizado</option>
+                                <option value="diario">Cuidado Diario</option>
+                                <option value="helado">Entrega de Helados</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-type">Tipo de mascota</label>
+                            <select id="pet-type" class="form-control" required>
+                                <option value="">Selecciona</option>
+                                <option value="perro">Perro</option>
+                                <option value="gato">Gato</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Fecha preferida</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora preferida</label>
+                            <select id="time" class="form-control" required>
+                                <option value="">Selecciona hora</option>
+                                <option value="morning">Mañana (8:00-12:00)</option>
+                                <option value="afternoon">Tarde (12:00-17:00)</option>
+                                <option value="evening">Noche (17:00-20:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje adicional</label>
+                        <textarea id="message" class="form-control" placeholder="Cuéntanos sobre tu mascota, necesidades especiales, etc."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Agendar servicio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería y testimonios -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Momentos Felices</h2>
+                <p>Algunos de los momentos que hemos compartido con nuestros amigos peludos. ¡Ellos son nuestra mayor motivación!</p>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Perro jugando en el parque">
+                    <div class="gallery-caption">Max disfrutando del parque</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1554457945-ba5df6648602?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Perro comiendo helado">
+                    <div class="gallery-caption">Luna probando nuestro helado natural</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1530041686259-53d26f863313?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Perros socializando">
+                    <div class="gallery-caption">Grupo de amigos en la guardería</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1583512603806-077998240c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Perro en el agua">
+                    <div class="gallery-caption">Rocky refrescándose en verano</div>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Contraté los servicios de paseo para mi labrador y la diferencia es enorme. Vuelve feliz y cansado. ¡Las fotos que envían son un detalle maravilloso!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>María López</h4>
+                            <span>Dueña de Rocky</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Los helados naturales son el mejor invento para el verano. A mi perra le encantan y yo me quedo tranquila sabiendo que son saludables."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Martínez</h4>
+                            <span>Dueño de Luna</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Cuando viajé por trabajo, dejé a mi perro en la guardería diurna. Los reportes diarios con fotos me tranquilizaron mucho. Volví a encontrar a un perro feliz."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ana Rodríguez</h4>
+                            <span>Dueña de Max</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HappyPaws</h3>
+                    <p>Especialistas en cuidado canino con más de 10 años de experiencia. Nuestra misión es hacer felices a los perros y tranquilizar a sus dueños.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Canina 123, Ciudad Feliz</li>
+                        <li><i class="fas fa-phone"></i> +34 912 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@happypaws.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 8:00 - 20:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="contact-info">
+                        <li><a href="#inicio" style="color: white; text-decoration: none;">Inicio</a></li>
+                        <li><a href="#servicios" style="color: white; text-decoration: none;">Servicios</a></li>
+                        <li><a href="#pedidos" style="color: white; text-decoration: none;">Pedidos</a></li>
+                        <li><a href="#contacto" style="color: white; text-decoration: none;">Contacto</a></li>
+                        <li><a href="#galeria" style="color: white; text-decoration: none;">Galería</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 HappyPaws. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Bloquear scroll cuando el menú está abierto
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Animación suave para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Manejo de formularios
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu pedido! Te contactaremos para confirmar los detalles.');
+            this.reset();
+        });
+        
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu reserva! Hemos recibido tu solicitud y te contactaremos pronto.');
+            this.reset();
+        });
+        
+        // Cambio de color en el header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                header.style.backgroundColor = 'white';
+            }
+        });
+    </script>
+</body>
+</html>
